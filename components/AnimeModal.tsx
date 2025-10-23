@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowUp, FaArrowDown, FaBox, FaFilm, FaDownload, FaRegCalendarAlt, FaMagnet } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { AnimeItem } from "../lib/api";

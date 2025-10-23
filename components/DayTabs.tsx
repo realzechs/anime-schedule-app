@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import AnimeCard from "./AnimeCard";
 import { Day } from "../lib/api";
 import classNames from "classnames";
