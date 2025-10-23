@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@plugin 'tailwind-scrollbar';
+
+/* ---------- Global Styles ---------- */
+
+/* Dark anime-inspired theme */
+body {
+  background-color: #0B0D17;
+  /* deep dark background */
+  color: #EAEAEA;
+  /* soft off-white text */
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Scrollbar customization (optional, anime feel) */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #0B0D17;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #9B5DE5;
+  /* neon purple accent */
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #00F0FF;
+  /* neon cyan on hover */
+}
+
+/* Links */
+a {
+  color: #9B5DE5;
+  /* neon purple accent */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #00F0FF;
+  /* neon cyan hover */
+  text-decoration: underline;
+}
+
+/* Inputs / text fields */
+input,
+textarea,
+select {
+  background-color: #1C1F2A;
+  /* slightly lighter card color */
+  color: #EAEAEA;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8A8D9F;
+  /* muted placeholder */
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Card surfaces */
+.card {
+  background-color: #1C1F2A;
+  color: #EAEAEA;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(155, 93, 229, 0.4);
+  /* neon glow on hover */
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #EAEAEA;
+}
+
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
