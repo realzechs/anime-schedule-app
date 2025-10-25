@@ -51,7 +51,7 @@ export default function DayTabs({ days }: { days: Day[] }) {
           transition={{ duration: 0.3 }}
           className="w-full flex flex-col items-center space-y-4"
         >
-          <div className="space-y-4 w-full">
+          <div className="w-full">
             {activeDay.anime.map(anime => (
               <AnimeCard key={anime.id} anime={anime} />
             ))}

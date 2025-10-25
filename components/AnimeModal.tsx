@@ -156,11 +156,11 @@ export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; o
                 )}
 
                 <div className="max-h-96 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-indigo-400/60 scrollbar-track-gray-100/20 dark:scrollbar-thumb-indigo-700/60 dark:scrollbar-track-gray-700/20 scrollbar-thumb-rounded scrollbar-track-rounded">
-                  <ul className="space-y-3">
+                  <ul >
                     {nyaaData?.torrents?.map((t) => (
                       <li
                         key={t.id}
-                        className="p-4 bg-white/10 dark:bg-gray-800/40 backdrop-blur-md rounded-2xl flex flex-col gap-3 border border-white/10 dark:border-gray-700 hover:shadow-lg transition"
+                        className="my-4 p-4 bg-white/10 dark:bg-gray-800/40 backdrop-blur-md rounded-2xl flex flex-col gap-3 border border-white/10 dark:border-gray-700 hover:shadow-lg transition"
                       >
                         {/* Torrent Name */}
                         <a

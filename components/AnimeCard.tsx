@@ -11,7 +11,7 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
     <>
       <div
         onClick={() => setOpen(true)}
-        className="flex items-start gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-gray-900/30 shadow-lg dark:shadow-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+        className="flex my-4 items-start gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-gray-900/30 shadow-lg dark:shadow-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
       >
 
         {/* Poster */}
