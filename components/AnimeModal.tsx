@@ -87,10 +87,10 @@ export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; o
         transition={{ duration: 0.25, ease: "easeInOut" }}
       >
         {/* Card content */}
-        <div className="relative w-full max-w-5xl bg-white/20 dark:bg-gray-900/30 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 overflow-auto max-h-[90vh]">
-          <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+        <div className="relative w-full max-w-full sm:max-w-5xl bg-white/20 dark:bg-gray-900/30 backdrop-blur-md rounded-2xl shadow-2xl p-4 sm:p-8 overflow-auto max-h-[90vh]">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
             {/* Poster */}
-            <div className="w-40 sm:w-48 md:w-56 lg:w-64 aspect-2/3 rounded-2xl overflow-hidden border border-white/20 dark:border-gray-700/50 shrink-0">
+            <div className="w-full sm:w-40 md:w-48 lg:w-56 aspect-2/3 rounded-2xl overflow-hidden border border-white/20 dark:border-gray-700/50 shrink-0">
               <img
                 src={initial.poster_url || ""}
                 alt={initial.title}
@@ -100,7 +100,7 @@ export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; o
 
             {/* Content */}
             <motion.div
-              className="flex-1 flex flex-col min-w-0 opacity-0"
+              className="flex-1 flex flex-col min-w-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -156,7 +156,7 @@ export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; o
                 )}
 
                 <div className="max-h-96 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-indigo-400/60 scrollbar-track-gray-100/20 dark:scrollbar-thumb-indigo-700/60 dark:scrollbar-track-gray-700/20 scrollbar-thumb-rounded scrollbar-track-rounded">
-                  <ul >
+                  <ul>
                     {nyaaData?.torrents?.map((t) => (
                       <li
                         key={t.id}

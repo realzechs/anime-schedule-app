@@ -11,11 +11,11 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
     <>
       <div
         onClick={() => setOpen(true)}
-        className="flex my-4 items-start gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-gray-900/30 shadow-lg dark:shadow-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+        className="flex flex-col sm:flex-row my-4 items-start gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-gray-900/30 shadow-lg dark:shadow-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
       >
 
         {/* Poster */}
-        <div className="relative w-32 sm:w-36 md:w-44 lg:w-48 aspect-2/3 rounded-xl overflow-hidden shrink-0 border border-white/20 dark:border-gray-700/50">
+        <div className="relative w-full sm:w-32 md:w-36 lg:w-44 aspect-2/3 rounded-xl overflow-hidden shrink-0 border border-white/20 dark:border-gray-700/50">
           {anime.poster_url ? (
             <img
               src={anime.poster_url}
