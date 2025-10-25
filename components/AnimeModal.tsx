@@ -90,7 +90,7 @@ export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; o
         <div className="relative w-full max-w-5xl bg-white/20 dark:bg-gray-900/30 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 overflow-auto max-h-[90vh]">
           <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
             {/* Poster */}
-            <div className="w-48 sm:w-56 h-64 sm:h-80 rounded-2xl overflow-hidden border-2 border-white/20 dark:border-gray-700/50 shrink-0">
+            <div className="w-40 sm:w-48 md:w-56 lg:w-64 aspect-2/3 rounded-2xl overflow-hidden border border-white/20 dark:border-gray-700/50 shrink-0">
               <img
                 src={initial.poster_url || ""}
                 alt={initial.title}

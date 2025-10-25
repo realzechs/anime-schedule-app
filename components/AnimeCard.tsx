@@ -15,7 +15,7 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
       >
 
         {/* Poster */}
-        <div className="relative w-36 aspect-2/3 rounded-xl overflow-hidden shrink-0 border-2 border-white/20 dark:border-gray-700/50">
+        <div className="relative w-32 sm:w-36 md:w-44 lg:w-48 aspect-2/3 rounded-xl overflow-hidden shrink-0 border border-white/20 dark:border-gray-700/50">
           {anime.poster_url ? (
             <img
               src={anime.poster_url}
