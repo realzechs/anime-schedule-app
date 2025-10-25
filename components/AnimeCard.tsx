@@ -66,10 +66,39 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
             </div>
 
             {anime.status && (
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                Aired: {anime.status.aired} / {anime.status.total ?? "?"}
-              </p>
+              <div className="mt-3 space-y-1">
+                {anime.status.total ? (
+                  <>
+                    <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                      <span>Aired</span>
+                      <span>{anime.status.aired} / {anime.status.total}</span>
+                    </div>
+
+                    <div className="relative w-full h-[3px] bg-gray-300 dark:bg-gray-700 rounded-full">
+                      <div
+                        className="absolute inset-y-0 left-0 bg-indigo-500 dark:bg-indigo-400 rounded-full transition-[width] duration-500"
+                        style={{
+                          width: `${(anime.status.aired / anime.status.total) * 100}%`,
+                        }}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                      <span>Airing</span>
+                      <span>Episode {anime.status.aired}</span>
+                    </div>
+
+                    {/* “Ongoing progress” line — does NOT imply total */}
+                    <div className="relative w-full h-[3px] bg-gray-300/50 dark:bg-gray-700/50 rounded-full overflow-hidden">
+                      <div className="absolute inset-0 bg-linear-to-r from-indigo-400/70 via-indigo-200/40 to-indigo-400/70 animate-[pulse_2.2s_ease-in-out_infinite]" />
+                    </div>
+                  </>
+                )}
+              </div>
             )}
+
           </div>
 
           <a
