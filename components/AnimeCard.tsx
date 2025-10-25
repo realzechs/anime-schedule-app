@@ -106,7 +106,7 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="mt-4 inline-block w-fit px-4 py-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors duration-200 rounded-lg"
+            className="mt-4 self-start px-3 py-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-100/30 dark:bg-indigo-900/20 rounded-md hover:bg-indigo-100/50 dark:hover:bg-indigo-900/30 transition-colors"
           >
             View on MAL
           </a>
