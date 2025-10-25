@@ -6,19 +6,54 @@ import { AnimeItem } from "../lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 import useNyaa from "../hooks/useNyaa";
 
-export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; onClose: () => void }) {
-  const [searchTitle, setSearchTitle] = useState(initial.title);
-  const titleForSearch = `VARYG DUAL 1080p ${searchTitle.replace(/\s+/g, "+")}`;
-  const { data: nyaaData, loading, error } = useNyaa(titleForSearch, initial.id);
 
-  // Retry search with English title if no results
-  useEffect(() => {
-    if (!loading && !error && nyaaData?.torrents?.length === 0 && initial.title_english && searchTitle !== initial.title_english) {
-      setSearchTitle(initial.title_english);
+function cleanSearchTerm(term: string) {
+  // remove following characters: ' " :
+  return term.replace(/['":]/g, "");
+}
+
+const SEARCH_PROFILES = [
+  {
+    label: "VARYG Dual Audio",
+    pattern: (title: string, titleEn?: string) => {
+      const t = cleanSearchTerm(title);
+      const te = titleEn ? cleanSearchTerm(titleEn) : undefined;
+      return te ? `VARYG DUAL 1080p ("${t}"|"${te}")` : `VARYG DUAL 1080p ${t}`;
     }
-  }, [loading, error, nyaaData, initial.title_english, searchTitle]);
+  },
+  {
+    label: "Yameii Dual Audio",
+    pattern: (title: string, titleEn?: string) => {
+      const t = cleanSearchTerm(title);
+      const te = titleEn ? cleanSearchTerm(titleEn) : undefined;
+      return te ? `Yameii 1080p ("${t}"|"${te}")` : `Yameii 1080p ${t}`;
+    }
+  },
+  {
+    label: "Dub 1080p",
+    pattern: (title: string, titleEn?: string) => {
+      const t = cleanSearchTerm(title);
+      const te = titleEn ? cleanSearchTerm(titleEn) : undefined;
+      return te ? `Dub 1080p ("${t}"|"${te}")` : `Dub 1080p ${t}`;
+    }
+  }
+];
 
-  // Close on Escape
+
+export default function AnimeModal({ initial, onClose }: { initial: AnimeItem; onClose: () => void }) {
+  const queries = SEARCH_PROFILES.map(p => p.pattern(initial.title, initial.title_english));
+  const [queryIndex, setQueryIndex] = useState(0);
+  const searchQuery = queries[queryIndex];
+  const { data: nyaaData, loading, error } = useNyaa(searchQuery, initial.id);
+
+  useEffect(() => {
+    if (loading || error) return;
+
+    if (nyaaData?.torrents?.length === 0 && queryIndex < queries.length - 1) {
+      setQueryIndex(queryIndex + 1);
+    }
+  }, [loading, error, nyaaData, queryIndex, queries.length]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
