@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { AnimeItem } from "../lib/api";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import AnimeModal from "./AnimeModal";
 
 export default function AnimeCard({ anime }: { anime: AnimeItem }) {
@@ -9,8 +9,7 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
 
   return (
     <>
-      <motion.div
-        layoutId={`card-${anime.id}`}
+      <div
         onClick={() => setOpen(true)}
         className="flex items-start gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-gray-900/30 shadow-lg dark:shadow-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
       >
@@ -83,7 +82,7 @@ export default function AnimeCard({ anime }: { anime: AnimeItem }) {
             View on MAL
           </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Modal */}
       <AnimatePresence>
