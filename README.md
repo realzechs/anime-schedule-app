@@ -27,7 +27,7 @@ This project uses:
 
 | Schedule View | Details + Torrent View |
 |---|---|
-| ![Schedule](https://github.com/user-attachments/assets/dd1ed6d9-c098-47ef-8e78-81ead2abb529) | ![Details](https://github.com/user-attachments/assets/01239976-3599-4d1b-a2d0-c004358af15f) |
+| ![Schedule](https://github.com/user-attachments/assets/7def90fd-5dbe-4dd3-bbf0-ce3b0e22f2c6) | ![Details](https://github.com/user-attachments/assets/165ab918-07f1-4c12-918a-17dbd78b88ff) |
 
 ---
 
