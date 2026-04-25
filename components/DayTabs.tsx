@@ -25,7 +25,7 @@ export default function DayTabs({ days }: { days: Day[] }) {
   return (
     <div className="flex flex-col items-center w-full">
       {/* Tabs */}
-      <nav className="flex flex-wrap gap-2 sm:gap-3 mb-6 p-3 rounded-2xl bg-gray-900/40 backdrop-blur-md shadow-md justify-center border border-gray-800">
+      <nav className="sticky top-4 z-20 flex flex-wrap gap-2 sm:gap-3 mb-6 p-3 rounded-2xl bg-gray-900/80 backdrop-blur-md shadow-md justify-center border border-gray-800">
         {sorted.map(d => {
           const isActive = active.toLowerCase() === d.day.toLowerCase();
 
