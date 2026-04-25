@@ -95,15 +95,15 @@ export default function AnimeModal({
         key="modal"
         layoutId={`card-${initial.id}`}
         onClick={(e) => e.stopPropagation()}
-        className="fixed inset-0 z-40 flex items-start justify-center p-6 sm:p-12 overflow-auto"
+        className="fixed inset-0 z-40 flex items-start justify-center p-6 sm:p-12 overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
       >
         {/* Card */}
-        <div className="relative w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-auto">
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+        <div className="relative w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
 
             {/* Poster */}
             <div className="w-full sm:w-48 lg:w-56 aspect-2/3 rounded-2xl overflow-hidden border border-gray-700/50">
@@ -129,6 +129,7 @@ export default function AnimeModal({
                     {initial.title_english || initial.title}
                   </h2>
 
+                  {/* Genres */}
                   {initial.genres && (
                     <div className="flex flex-wrap gap-2 mt-2">
                       {initial.genres.split(", ").map((g) => (
@@ -141,6 +142,40 @@ export default function AnimeModal({
                       ))}
                     </div>
                   )}
+
+                  {/* Score + MAL */}
+                  <div className="flex items-center gap-3 mt-3 flex-wrap">
+                    {initial.score && (
+                      <span className="text-yellow-300 font-semibold bg-yellow-900/30 px-2 py-1 rounded-lg text-sm">
+                        ⭐ {initial.score}
+                      </span>
+                    )}
+
+                    {initial.url && (
+                      <a
+                        href={initial.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-3 py-1 text-sm font-medium text-indigo-300 bg-indigo-900/30 rounded-lg hover:bg-indigo-800/50 transition"
+                      >
+                        View on MAL
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Studios + Source */}
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {initial.studios && (
+                      <span className="bg-green-900/30 text-green-300 px-2 py-0.5 rounded-lg text-sm">
+                        {initial.studios}
+                      </span>
+                    )}
+                    {initial.source && (
+                      <span className="bg-pink-900/30 text-pink-300 px-2 py-0.5 rounded-lg text-sm">
+                        {initial.source}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Close */}
@@ -169,7 +204,10 @@ export default function AnimeModal({
                   </div>
                 )}
 
-                {error && <div className="text-red-400">Error: {String(error)}</div>}
+                {error && (
+                  <div className="text-red-400">Error: {String(error)}</div>
+                )}
+
                 {!loading && !error && nyaaData?.torrents?.length === 0 && (
                   <div className="text-gray-500">No results found.</div>
                 )}
@@ -179,7 +217,7 @@ export default function AnimeModal({
                     {nyaaData?.torrents?.map((t) => (
                       <li
                         key={t.id}
-                        className="my-4 p-4 bg-gray-800/40 backdrop-blur-md rounded-2xl border border-gray-700 hover:shadow-lg transition"
+                        className="my-4 p-4 bg-gray-800/40 backdrop-blur-md rounded-2xl border border-gray-700 hover:border-gray-600 hover:shadow-lg transition"
                       >
                         {/* Name */}
                         <a
