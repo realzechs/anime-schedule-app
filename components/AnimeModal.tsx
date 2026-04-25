@@ -83,26 +83,21 @@ export default function AnimeModal({
       <motion.div
         key="overlay"
         onClick={onClose}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 flex items-center justify-center p-6 sm:p-12 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.25 }}
-      />
-
-      {/* Modal container */}
-      <motion.div
-        key="modal"
-        layoutId={`card-${initial.id}`}
-        onClick={(e) => e.stopPropagation()}
-        className="fixed inset-0 z-40 flex items-start justify-center p-6 sm:p-12 overflow-hidden"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.25, ease: "easeInOut" }}
       >
-        {/* Card */}
-        <div className="relative w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-hidden">
+        {/* Modal */}
+        <motion.div
+          key="modal"
+          onClick={(e) => e.stopPropagation()}
+          className="w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-hidden cursor-default"
+          initial={{ opacity: 0, scale: 0.96, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.96, y: 10 }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
 
             {/* Poster */}
@@ -115,17 +110,12 @@ export default function AnimeModal({
             </div>
 
             {/* Content */}
-            <motion.div
-              className="flex-1 flex flex-col min-w-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ delay: 0.15, duration: 0.25 }}
-            >
+            <div className="flex-1 flex flex-col min-w-0">
+
               {/* Header */}
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 break-all">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 wrap-break-word">
                     {initial.title_english || initial.title}
                   </h2>
 
@@ -217,7 +207,7 @@ export default function AnimeModal({
                     {nyaaData?.torrents?.map((t) => (
                       <li
                         key={t.id}
-                        className="my-4 p-4 bg-gray-800/40 backdrop-blur-md rounded-2xl border border-gray-700 hover:border-gray-600 hover:shadow-lg transition"
+                        className="my-4 p-4 bg-gray-800/40 rounded-2xl border border-gray-700 hover:border-gray-600 hover:shadow-lg transition"
                       >
                         {/* Name */}
                         <a
@@ -273,9 +263,10 @@ export default function AnimeModal({
                   </ul>
                 </div>
               </div>
-            </motion.div>
+
+            </div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );
