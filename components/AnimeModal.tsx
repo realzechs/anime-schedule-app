@@ -92,7 +92,7 @@ export default function AnimeModal({
         <motion.div
           key="modal"
           onClick={(e) => e.stopPropagation()}
-          className="w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-hidden cursor-default"
+          className="w-full sm:max-w-5xl bg-gray-900/40 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 p-4 sm:p-8 max-h-[90vh] overflow-auto cursor-default"
           initial={{ opacity: 0, scale: 0.96, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 10 }}
